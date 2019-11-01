@@ -1,0 +1,24 @@
+<div class="content-owner">
+  <div class="name-owner">
+    <a [routerLink]="['/wareOwners/edit', wareOwner.id]" routerLinkActive="active"
+       *ngIf="authenticationService.roles.companyAdmin.status"><p>
+      {{wareOwner.name}}</p></a>
+    <p *ngIf="authenticationService.roles.dispatcher.status">{{wareOwner.name}}</p>
+  </div>
+  <div class="contacts-owner">
+    <p class="address-wareOwner"><i class="place material-icons">place</i>{{wareOwner.wareOwnerAddress.city}},
+      st. {{wareOwner.wareOwnerAddress.street}}, {{wareOwner.wareOwnerAddress.house}},
+      of. {{wareOwner.wareOwnerAddress.office}}
+    </p>
+    <p class="contact"><i class="login material-icons">local_phone</i>{{wareOwner.phone}}</p>
+    <p class="contact"><i class="email material-icons">email</i>{{wareOwner.email}}</p>
+  </div>
+</div>
+<div class="control-owner">
+  <span class="delete-button">
+    <a *ngIf="authenticationService.roles.companyAdmin.status" (click)="deleteWareOwner(wareOwner.id)"
+       class="waves-light btn delete">
+      Delete
+    </a>
+  </span>
+</div>

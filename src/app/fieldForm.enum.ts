@@ -1,0 +1,20 @@
+export enum FieldForm {
+  city = 'city',
+  contact = 'contact',
+  surname = 'surname',
+  name = 'name',
+  phone = 'phone',
+  email = 'email',
+  username = 'username',
+  password = 'password',
+  street = 'street',
+  house = 'house',
+  number = 'number',
+  amount = 'amount',
+  weight = 'weight',
+  carBrand = 'car brand',
+  model = 'car model',
+  consumption = 'auto consumption',
+  numberAuto = 'car number',
+  bodyType = 'body type'
+}

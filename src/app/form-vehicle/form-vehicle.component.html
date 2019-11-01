@@ -1,0 +1,56 @@
+<div class="container-vehicle">
+  <div class="row">
+    <h4 class="container-vehicle__title">Vehicles</h4>
+    <form [formGroup]="formVehicle">
+      <div class="form-group">
+        <label for="model">Car model *</label>
+        <input class="form-control" formControlName="model" id="model" name="model"
+               placeholder="Car model"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formVehicle.controls['model']"
+                               [nameField]="model"></app-validation-messages>
+      <div class="form-group">
+        <label for="consumptionAuto">Auto consumption *</label>
+        <input class="form-control" formControlName="consumption" id="consumptionAuto" name="model"
+               placeholder="Auto consumption"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formVehicle.controls['consumption']"
+                               [nameField]="consumption"></app-validation-messages>
+      <div class="form-group">
+        <label for="numberAuto">Car number *</label>
+        <input class="form-control" formControlName="numberAuto" id="numberAuto" name="model"
+               placeholder="Car number"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formVehicle.controls['numberAuto']"
+                               [nameField]="numberAuto" [errorField]="errorNumber"></app-validation-messages>
+      <div class="form-group">
+        <label for="bodyType">Body type *</label>
+        <input class="form-control" formControlName="bodyType" id="bodyType" name="bodyType"
+               placeholder="Body type auto"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formVehicle.controls['bodyType']"
+                               [nameField]="bodyType"></app-validation-messages>
+    </form>
+    <div class="form-group">
+      <button (click)="addCompany()" *ngIf="add" [disabled]="formVehicle.invalid"
+              class="waves-effect waves-light btn">
+        Add vehicle
+      </button>
+    </div>
+    <div class="form-group">
+      <button (click)="editCompany()" *ngIf="edit"
+              [disabled]="!formVehicle.dirty || formVehicle.invalid || errorNumber"
+              class="waves-effect waves-light btn">Edit vehicle
+      </button>
+    </div>
+    <div class="form-success">
+      <button (click)="$event.preventDefault()" class="waves-effect waves-light btn" routerLink="/vehicles">Back to
+        vehicles list
+      </button>
+    </div>
+  </div>
+</div>

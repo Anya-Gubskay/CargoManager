@@ -1,0 +1,153 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'assets/constants.less';
+
+.mat-dialog-container {
+  border: solid @gold-light 4px;
+  position: relative;
+}
+
+.container {
+  app-login,
+  app-table-company,
+  app-table-user,
+  app-table-vehicles,
+  app-table-ware-owners,
+  app-table-warehouses,
+  app-table-consignment-notes,
+  app-form-vehicle,
+  app-form-company,
+  app-form-user,
+  app-form-ware-owner,
+  app-form-warehouse,
+  app-form-consignment-notes,
+  app-table-consignment-notes
+  {
+    position: relative;
+    width: 100vw;
+    max-width: 2048px;
+    min-width: 360px;
+    flex: 1 0 auto;
+    margin: 0 auto;
+    background-color: #e0e0e0;
+  }
+}
+
+.container {
+  app-login {
+    display: flex;
+    background: url("assets/img/auto1.jpeg") no-repeat 50% 50%;
+    background-size: cover;
+    filter: hue-rotate(367deg);
+  }
+}
+
+@media only screen and (max-width: @extra-large-width) {
+  .container {
+    app-login {
+      background-position: 81% 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: @large-medium-width) {
+  .container {
+    app-login {
+      background-position: 49% 50% ;
+    }
+  }
+}
+
+@media only screen and (max-width: @medium-width) {
+  .container {
+    app-login {
+      background-position: 44% 50% ;
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+  .container {
+    app-login {
+      background-position: 49% 50% ;
+    }
+  }
+}
+
+.loading {
+  text-align: center;
+}
+
+.button-all {
+
+  .mat-button {
+    line-height: 0;
+    padding-left: 0;
+    padding-right: 8px;
+
+    span {
+      color: @white;
+    }
+  }
+}
+
+.form-group label {
+  font-size: 15px;
+}
+
+.button-dialog {
+  .mat-button-base {
+    background: @gold-light !important;
+    color: white;
+    font-weight: bold;
+
+    &:focus {
+      background: @gold-light !important;
+    }
+  }
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0 !important;
+}
+
+.mat-snack-bar-container {
+  position: fixed;
+  top: 65px;
+  right: 0;
+  color: @white;
+  max-width: 85% !important;
+}
+
+.errorPopup {
+  background-color: @red-light;
+
+  .button-all;
+
+  .mat-button:active {
+    background-color: @red-light;
+  }
+
+  .mat-button:focus {
+    background-color: @red-light;
+  }
+}
+
+.successPopup {
+  background-color: @green-light;
+}
+
+.mat-menu-item {
+  font-size: 18px;
+  font-weight: bold;
+
+  i {
+    top: 5px;
+    position: relative;
+    margin-right: 5px;
+  }
+}
+
+input:focus {
+  border-bottom: @gold-light !important;
+  box-shadow: 0 1px 0 0 @gold-light !important;
+}

@@ -1,0 +1,165 @@
+@import '../../assets/constants.less';
+
+.content-warehouse {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.6s linear;
+  opacity: 1;
+  z-index: 10;
+  min-height: 250px;
+
+  .name-person-warehouse {
+    width: 100%;
+    height: 40%;
+    text-align: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+
+    h5 {
+      font-size: 25px;
+      font-weight: bold;
+      color: @color-light-title-company;
+      margin: 0;
+      padding: 20px 0;
+      cursor: pointer;
+      transition: all .3s linear;
+
+      &:hover {
+        color: @white;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 25px;
+        font-weight: bold;
+        color: @color-light-title-company;
+        width: 90%;
+        margin: 0;
+        padding: 20px 0;
+        cursor: text;
+      }
+    }
+  }
+
+  .contacts-warehouse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    width: 90%;
+    min-height: 160px;
+    background: @white;
+    font-size: 17px;
+    padding: 0 10px;
+    border: solid @black 1px;
+    border-radius: 10px;
+
+    .address-warehouse {
+      display: flex;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .contact {
+      margin: 0;
+      font-weight: 500;
+      text-align: start;
+    }
+
+    i {
+      position: relative;
+      top: 7px;
+      margin-right: 5px;
+      font-weight: 500;
+      color: @color-icon-light;
+    }
+  }
+}
+
+.control-warehouse {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 15px 12px;
+  transition: all ease-out .4s;
+
+  .delete {
+    background: @black;
+    border: solid @gold-light 1px;
+    box-shadow: none;
+    color: @gold-light;
+    font-weight: 700;
+    font-size: 17px;
+
+    &:hover {
+      background: @white;
+    }
+  }
+}
+
+.suspended {
+  transition: all 0.6s linear;
+  opacity: 0.1;
+}
+
+@media only screen and (max-width: @medium-width) {
+
+  .content-warehouse {
+
+    .name-person-warehouse {
+      height: 70px;
+      min-height: 90px;
+      width: 90%;
+
+      h5 {
+        font-size: 30px;
+      }
+
+      .contact-person-warehouse {
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    .contacts-warehouse {
+      margin-top: 20px;
+
+      .address-warehouse,
+      .contact {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+
+  .content-warehouse {
+
+    .name-person-warehouse {
+      h5 {
+        font-size: 21px;
+      }
+
+      .contact-person-warehouse {
+        font-size: 17px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+}

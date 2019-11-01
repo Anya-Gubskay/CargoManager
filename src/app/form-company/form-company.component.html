@@ -1,0 +1,139 @@
+<div class="container-company">
+  <div class="row">
+    <h4 class="container-company__title">Companies</h4>
+    <form [formGroup]="formCompany">
+      <div class="form-group">
+        <label for=nameCompany>Name Company *</label>
+        <input (ngModelChange)="changesName()" class="form-control" formControlName="name" id=nameCompany name="name"
+               placeholder="Name Company" type="text">
+      </div>
+      <app-validation-messages [controlName]="formCompany.controls['name']" [errorField]="errorName"
+                               [nameField]="name"></app-validation-messages>
+      <div class="form-group" formGroupName="address" id="address">
+        <label for="address">Address *</label>
+        <div class="address-field-company">
+          <label for=cityAddressUser>City *</label>
+          <input class="form-control" formControlName="city" id="cityAddressUser" name="city" placeholder="City"
+                 type="text">
+        </div>
+        <app-validation-messages [controlName]="address.controls['city']" [errorMargin]="errorMargin"
+                                 [nameField]="city"></app-validation-messages>
+        <div class="address-field-company">
+          <label for="streetAddressUser">Street *</label>
+          <input class="form-control" formControlName="street" id="streetAddressUser" name="street" placeholder="Street"
+                 type="text">
+        </div>
+        <app-validation-messages [controlName]="address.controls['street']" [errorMargin]="errorMargin"
+                                 [nameField]="street"></app-validation-messages>
+        <div class="address-field-company">
+          <label for="houseAddressUser">House *</label>
+          <input class="form-control" formControlName="house" id="houseAddressUser" name="house" placeholder="House"
+                 type="text">
+        </div>
+        <app-validation-messages [controlName]="address.controls['house']" [errorMargin]="errorMargin"
+                                 [nameField]="house"></app-validation-messages>
+        <div class="address-field-company">
+          <label for="officeAddressUser">Office</label>
+          <input class="form-control" formControlName="office" id="officeAddressUser" name="office" placeholder="Office"
+                 type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contactPerson">Contact Person *</label>
+        <input class="form-control" formControlName="contact" id="contactPerson" name="contact"
+               placeholder="Contact Person"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formCompany.controls['contact']"
+                               [nameField]="contact"></app-validation-messages>
+      <div class="form-group">
+        <label for="emailCompany">Email *</label>
+        <input (ngModelChange)="changesEmail()" class="form-control" formControlName="email" id="emailCompany"
+               name="email"
+               placeholder="Email Company"
+               type="email">
+      </div>
+      <app-validation-messages [controlName]="formCompany.controls['email']" [errorField]="errorEmail"
+                               [nameField]="email"></app-validation-messages>
+      <div class="form-group">
+        <label for="phoneCompany">Phone *</label>
+        <input class="form-control" formControlName="phone" id="phoneCompany" name="phone" placeholder="Phone Company"
+               type="text">
+      </div>
+      <app-validation-messages [controlName]="formCompany.controls['phone']"
+                               [nameField]="phone"></app-validation-messages>
+      <h4 class="container-company__title">Company Administrator</h4>
+      <div class="form-group" formGroupName="admin" id="admin">
+        <div class="admin-field-company">
+          <label for="surname">Surname *</label>
+          <input class="form-control" formControlName="surname" id="surname" name="surname" placeholder="Admin surname"
+                 type="text">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['surname']"
+                                 [nameField]="surname"></app-validation-messages>
+        <div class="admin-field-company">
+          <label for="name">Name *</label>
+          <input (ngModelChange)="changesName()" class="form-control" formControlName="name" id="name" name="name"
+                 placeholder="Admin name" type="text">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['name']"
+                                 [nameField]="name"></app-validation-messages>
+        <div class="admin-field-company">
+          <label for="patronymic">Patronymic</label>
+          <input class="form-control" formControlName="patronymic" id="patronymic" name="patronymic"
+                 placeholder="Admin patronymic" type="text">
+        </div>
+        <div class="admin-field-company">
+          <label for="phone">Phone *</label>
+          <input class="form-control" formControlName="phone" id="phone" name="phone" placeholder="Phone"
+                 type="email">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['phone']"
+                                 [nameField]="phone"></app-validation-messages>
+        <div class="admin-field-company">
+          <label for="email">Email *</label>
+          <input (ngModelChange)="changesEmailAdmin()" class="form-control" formControlName="email" id="email"
+                 name="email"
+                 placeholder="Email" type="email">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['email']" [errorField]="errorEmailAdmin"
+                                 [nameField]="email"></app-validation-messages>
+        <div class="admin-field-company">
+          <label for="username">Login *</label>
+          <input (ngModelChange)="changesNameAdmin()" class="form-control" formControlName="username" id="username"
+                 name="username" placeholder="Admin login (must be unique)" type="text" readonly=""
+                 (focus)="removeReadOnly($event)">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['username']" [errorField]="errorNameAdmin"
+                                 [nameField]="username"></app-validation-messages>
+        <div *ngIf="showPassword" class="admin-field-company">
+          <label for="password">Password *</label>
+          <input class="form-control" formControlName="password" id="password" name="password"
+                 placeholder="Password (minimum 7 symbols)" type="password">
+        </div>
+        <app-validation-messages [controlName]="admin.controls['password']"
+                                 [nameField]="password"></app-validation-messages>
+      </div>
+    </form>
+    <div *ngIf="reset" class="form-group">
+      <button (click)="resetPassword()" class="waves-effect waves-light btn">{{buttonReset}}</button>
+    </div>
+    <div class="form-group">
+      <button (click)="addCompany()" *ngIf="add" [disabled]="formCompany.invalid"
+              class="waves-effect waves-light btn">
+        Add Company
+      </button>
+    </div>
+    <div class="form-group">
+      <button (click)="editCompany()" *ngIf="edit"
+              [disabled]="!formCompany.dirty || formCompany.invalid || errorName || errorEmail || errorNameAdmin || errorEmailAdmin"
+              class="waves-effect waves-light btn">Edit Company
+      </button>
+    </div>
+    <div class="form-success">
+      <button (click)="$event.preventDefault()" class="waves-effect waves-light btn" routerLink="/companies">Back to
+        companies list
+      </button>
+    </div>
+  </div>
+</div>

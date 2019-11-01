@@ -1,0 +1,22 @@
+<div class="content-company" [class.suspended]="buttonStatus === 'Resume'">
+  <div class="name-person-company">
+    <a [routerLink]="['/companies/edit', company.id]" routerLinkActive="active"><h5>{{company.name}}</h5></a>
+    <p class="contact-person-company">{{company.contact}}</p>
+  </div>
+  <div class="contacts-company">
+    <p class="address-company"><i class="place material-icons">place</i>{{company.companyAddress.city}},
+      st. {{company.companyAddress.street}}, {{company.companyAddress.house}}, of. {{company.companyAddress.office}}
+    </p>
+    <p class="contact"><i class="phone material-icons">local_phone</i>{{company.phone}}</p>
+    <p class="contact"><i class="email material-icons">email</i>{{company.email}}</p>
+  </div>
+</div>
+<div class="control-company">
+  <span class="status-button">
+    <a (click)="openDialog1()"
+       class="waves-light btn status"
+       [class.button-background]="buttonStatus === 'Resume'">
+      {{buttonStatus}}
+    </a>
+  </span>
+</div>

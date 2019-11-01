@@ -1,0 +1,21 @@
+<div class="content-user">
+  <div class="name-user">
+    <p class="contact-person-user"><a [routerLink]="['/users/edit', user.id]" routerLinkActive="active">
+    <p>{{user.surname}}</p>
+    <p>{{user.name}}</p>
+    <p>{{user.patronymic}}</p>
+    </a></p>
+  </div>
+  <div class="contacts-user">
+    <p class="contact"><i class="login material-icons">computer</i>{{user.username}}</p>
+    <p class="contact" *ngFor="let u of user.userRoles"><i class="role material-icons">accessibility</i>{{u.role}}</p>
+  </div>
+</div>
+<div class="control-user">
+  <span class="delete-button">
+    <a (click)="deleteUser(user.id)"
+       class="waves-light btn delete">
+      Delete
+    </a>
+  </span>
+</div>

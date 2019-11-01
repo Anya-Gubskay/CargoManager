@@ -1,0 +1,31 @@
+<div class="container-consignment-notes">
+  <h4 class="container-consignment-notes__title">List of consignment notes</h4>
+  <div class="control-panel">
+    <div>
+      <button (click)="$event.preventDefault()" routerLink="/consignment-notes/add" class="waves-light btn"
+              *ngIf="authenticationService.roles.dispatcher.status">Add
+      </button>
+    </div>
+    <form *ngIf="(consignmentNotesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-consignment-notes">
+    <app-item-consignment-note class="content-consignment-note"
+                               *ngFor="let u of (consignmentNotesItems$ | async)?.items | paginate: {id: 'consignmentNotesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (consignmentNotesItems$| async)?.total}"
+                               [consignmentNote]="u">
+    </app-item-consignment-note>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(consignmentNotesItems$ | async)?.total === 0" class="title-empty">
+      <h5 colspan="6" class="noConsignment-notes">No Consignment Notes</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(consignmentNotesItems$ | async)?.total > (consignmentNotesItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)"
+                       class="pagination-custom" id="consignmentNotesPagination"></pagination-controls>
+</div>

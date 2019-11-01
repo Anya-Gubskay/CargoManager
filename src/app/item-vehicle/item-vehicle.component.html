@@ -1,0 +1,24 @@
+<div class="content-vehicle">
+  <div class="name-vehicle">
+    <p *ngIf="authenticationService.roles.companyAdmin.status" class="contact-person-vehicle"><a
+      [routerLink]="['/vehicles/edit',vehicle.id]" routerLinkActive="active">
+      {{vehicle.numberAuto}}</a></p>
+    <p *ngIf="authenticationService.roles.dispatcher.status" class="contact-person-vehicle">
+      {{vehicle.numberAuto}}</p>
+  </div>
+
+  <div class="contacts-vehicle">
+    <p class="contact"><i class="login material-icons">drive_eta</i>{{vehicle.model}}</p>
+    <p class="contact"><i class="login material-icons">local_gas_station</i>{{vehicle.consumption}}</p>
+    <p class="contact"><i class="login material-icons">rv_hookup</i>{{vehicle.bodyType}}</p>
+  </div>
+</div>
+<div class="control-vehicle">
+    <span class="delete-button">
+    <a *ngIf="authenticationService.roles.companyAdmin.status" (click)="deleteUser(vehicle.id)"
+       class="waves-light btn delete">
+      Delete
+    </a>
+  </span>
+</div>
+

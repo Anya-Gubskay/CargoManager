@@ -1,0 +1,30 @@
+<div class="container-companies">
+  <h4 class="container-company__title">List of companies</h4>
+  <div class="control-panel">
+    <div>
+      <button (click)="$event.preventDefault()" routerLink="/companies/add" class="waves-light btn">Add</button>
+    </div>
+    <form *ngIf="(companiesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-companies">
+    <app-item-company class="content-company"
+                      *ngFor="let u of (companiesItems$ | async)?.items | paginate: {id: 'companiesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (companiesItems$| async)?.total}"
+                      [company]="u"
+    >
+    </app-item-company>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(companiesItems$ | async)?.total === 0" class="title-empty">
+      <h5 colspan="6" class="noCompanies">No companies</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(companiesItems$ | async)?.total > (companiesItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)" class="pagination-custom"
+                       id="companiesPagination"></pagination-controls>
+</div>

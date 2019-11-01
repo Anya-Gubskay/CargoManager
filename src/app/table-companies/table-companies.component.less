@@ -1,0 +1,209 @@
+@import '../../assets/constants.less';
+
+.container-companies {
+  position: relative;
+  width: 92%;
+  margin: 0 0 28px 4%;
+  margin-top: calc(4% + 64px);
+
+
+  .container-company__title {
+    color: @black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+  }
+
+  .control-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    button {
+      width: 115px;
+      font-weight: bold;
+      background: @gold-light;
+      font-size: 17px;
+      transition: all ease-out .4s;
+
+      &:hover {
+        background: @gold-light-hover;
+      }
+    }
+
+    form {
+      width: 20%;
+      margin-right: 22px;
+      min-width: 100px;
+
+      select {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        height: 36px;
+      }
+    }
+
+    button,
+    select {
+      box-shadow: 1px 2px 4px 0 black;
+      margin: 10px;
+    }
+  }
+
+  .list-companies {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    .content-company,
+    .grid-clearfix {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+      flex-basis: 350px;
+      min-width: 350px;
+      max-width: 500px;
+      margin: 10px;
+      background: rgba(0, 0, 0, 0.37);
+      border-radius: 10px;
+      min-height: 340px;
+      position: relative;
+    }
+
+    .grid-clearfix {
+      opacity: 0;
+      height: 0;
+      min-height: 0;
+      margin: 0 10px;
+    }
+  }
+}
+
+.list-companies > .content-company {
+  background: @white;
+  -webkit-transition: all 0.4s ease;;
+  -moz-transition: all 0.4s ease;;
+  -o-transition: all 0.4s ease;;
+  transition: all 0.4s ease;
+}
+
+.content-company:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.title-empty {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-width: 100%;
+}
+
+.noCompanies {
+  text-align: center;
+}
+
+.pagination-custom /deep/ .ngx-pagination {
+  position: relative;
+  bottom: 8px;
+  text-align: center;
+  color: @white;
+
+  li {
+    margin: 6px;
+    border-radius: 3px;
+
+    span {
+      color: @black;
+      font-weight: bold;
+    }
+
+    a:hover {
+      background: @white;;
+      border-radius: 3px;
+      color: @black;
+    }
+  }
+
+  .disabled span {
+    color: @color-disabled;
+  }
+
+  .current {
+    background: rgba(0, 0, 0, .42);
+    box-shadow: 0 0 5px 1px @white;
+    font-weight: bold;
+  }
+}
+
+.pagination-custom /deep/ .ngx-pagination .pagination-previous,
+.pagination-custom /deep/ .ngx-pagination .pagination-next {
+  width: 120px;
+  text-align: center;
+  background: @black;
+  box-shadow: 0 0 5px 1px @white;
+
+  a {
+    font-size: 14px;
+    color: @white;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: @medium-width) {
+
+  .container-companies {
+
+    .container-company__title {
+      font-size: 35px;
+    }
+  }
+
+  .container-companies .list-companies {
+
+    .content-company,
+    .grid-clearfix {
+      flex-basis: 100%;
+      min-width: 310px;
+      max-width: 680px;
+    }
+
+    .grid-clearfix {
+      height: 0;
+      min-height: 0;
+    }
+  }
+
+  .pagination-custom /deep/ .ngx-pagination .pagination-previous,
+  .pagination-custom /deep/ .ngx-pagination .pagination-next {
+    width: 85px;
+    height: 26px;
+
+    a {
+      font-size: 12px;
+    }
+  }
+
+  .pagination-custom /deep/ .ngx-pagination .pagination-previous.disabled,
+  .pagination-custom /deep/ .ngx-pagination .pagination-next.disabled {
+    width: 85px;
+    height: 26px;
+
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+  .container-companies .list-companies {
+
+    .content-company,
+    .grid-clearfix {
+      flex-basis: 333px;
+    }
+  }
+}

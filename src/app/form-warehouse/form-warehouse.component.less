@@ -1,0 +1,103 @@
+@import '../../assets/constants.less';
+
+.error {
+  color: #ff0000;
+  font: bold 14px sans-serif;
+  padding: 5px;
+  background: #ff000036;
+}
+
+.container-warehouse {
+  display: block;
+  width: 92%;
+  margin: calc(4% + 64px) 0 28px 4%;
+}
+
+.container-warehouse__title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.row {
+  background-color: @white;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.form-success {
+  color: green;
+  font: bold 20px "SansSerif";
+  transition: all ease-out .4s;
+
+  button {
+    background: @gold-light;
+
+    &:hover {
+      background: @gold-light-hover;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.form-group button,
+.form-success button {
+  width: 250px;
+  margin: 16px 0;
+  font-weight: bold;
+  background: @gold-light;
+  transition: all ease-out .4s;
+
+  &:hover {
+    background: @gold-light-hover;
+  }
+}
+
+.title-modal {
+  font: bold 20px sans-serif;
+  text-align: center;
+}
+
+.modal-close {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.title-modal {
+  font: bold 20px sans-serif;
+  text-align: center;
+}
+
+a {
+  padding: 5px;
+  display: inline-block;
+  cursor: pointer;
+  max-width: 190px;
+  background: @gold-light;
+  margin: 5px;
+  color: @white;
+}
+
+.error-modal {
+  color: red;
+}
+
+.modal-close {
+  display: block;
+  cursor: pointer;
+  transform: translate(310px, -40px);
+}
+
+@media only screen and (max-width: @medium-width) {
+
+  .container-warehouse__title {
+    font-size: 35px;
+    margin: 5% 0;
+  }
+}

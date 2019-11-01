@@ -1,0 +1,20 @@
+<div class="content-warehouse">
+  <div class="name-person-warehouse">
+    <a *ngIf="authenticationService.roles.companyAdmin.status" [routerLink]="['/warehouses/edit', warehouse.id]"
+       routerLinkActive="active"><h5>{{warehouse.warehouseName}}</h5></a>
+    <a *ngIf="authenticationService.roles.dispatcher.status"><p>{{warehouse.warehouseName}}</p></a>
+  </div>
+
+  <div class="contacts-warehouse">
+    <p class="address-warehouse"><i class="place material-icons">place</i>{{warehouse.address}}</p>
+    <p class="contact"><i class="phone material-icons">local_phone</i>{{warehouse.phone}}</p>
+  </div>
+</div>
+<div class="control-warehouse">
+    <span class="delete-button">
+    <a *ngIf="authenticationService.roles.companyAdmin.status" (click)="deleteWarehouse(warehouse.id)"
+       class="waves-light btn delete">
+      Delete
+    </a>
+  </span>
+</div>

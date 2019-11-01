@@ -1,0 +1,118 @@
+@import '../../../assets/constants.less';
+
+.navbar-fixed {
+  height: 64px;
+
+  nav {
+    height: 64px;
+    background: @black;
+  }
+
+  .nav-wrapper {
+    display: block;
+    max-width: 2048px;
+    margin: 0 auto;
+
+    .container {
+      width: 92%;
+      max-width: 92%;
+      height: 100%;
+
+      #nav-mobile {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+          display: inline-block;
+          margin: 0;
+          text-align: center;
+
+          &:last-child {
+            width: 160px;
+          }
+
+          a {
+            font-size: 16px;
+            padding: 0 10px;
+            color: @color-light-icon-header-footer;
+            font-weight: bold;
+
+            &:hover {
+              background: @white;
+            }
+
+            .material-icons {
+              display: inline-flex;
+              vertical-align: top;
+              font-size: 36px;
+              margin-right: 3px;
+            }
+          }
+        }
+
+        .sign-out {
+          position: relative;
+          left: calc(100% - 150px);
+          width: 148px;
+        }
+      }
+
+      .brand-logo {
+        position: relative;
+        width: 70px;
+        height: 64px;
+
+        i {
+          font-size: 42px;
+          padding-left: 28px;
+          transform: scale(-1, 1);
+          color: @black;
+        }
+      }
+    }
+  }
+}
+
+.activeMobile {
+  background: @light-button-color;
+}
+
+.active {
+  background: @white;
+}
+
+.dropdown-trigger {
+  display: none;
+}
+
+@media only screen and (max-width: @large-width) {
+
+  #nav-mobile {
+
+    a {
+      display: none;
+    }
+
+    li {
+      text-align: start;
+
+      .dropdown-trigger {
+        display: inline-block;
+        height: 64px;
+        line-height: 64px;
+        // float: left;
+        margin-left: 10px;
+
+        i {
+          line-height: 64px;
+        }
+      }
+    }
+  }
+
+  .brand-logo i {
+    height: 64px;
+    line-height: 64px;
+  }
+}

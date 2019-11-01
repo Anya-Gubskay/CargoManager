@@ -1,0 +1,46 @@
+<div class="container-warehouse">
+  <h4 class="container-warehouse__title">Warehouses</h4>
+  <div class="row">
+    <form [formGroup]="formWarehouse">
+      <div class="form-group">
+        <label for="nameWarehouse">Name Warehouse *</label>
+        <input type="text" class="form-control" id="nameWarehouse" placeholder="Name Warehouse" name="name"
+               formControlName="warehouseName" (ngModelChange)="changesName()">
+      </div>
+      <div class="error"
+           *ngIf="formWarehouse.controls['warehouseName'].invalid && formWarehouse.controls['warehouseName'].touched || errorName">
+        Enter correct warehouse name
+      </div>
+      <div class="form-group">
+        <label for="addressWarehouse">Address Warehouse *</label>
+        <input type="text" class="form-control" id="addressWarehouse" placeholder="Address Warehouse" name="address"
+               formControlName="address">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone *</label>
+        <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone" formControlName="phone"
+               (ngModelChange)="changesPhone()">
+      </div>
+      <div class="error"
+           *ngIf="formWarehouse.controls['phone'].invalid && formWarehouse.controls['phone'].touched || errorPhone">
+        Enter correct warehouse phone
+      </div>
+      <div class="form-group">
+        <button *ngIf="add" (click)="addWarehouse()" [disabled]='!formWarehouse.valid'
+                class="waves-effect waves-light btn">Add Warehouse
+        </button>
+      </div>
+      <div class="form-group">
+        <button *ngIf="edit" (click)="editWarehouse()"
+                [disabled]='!formWarehouse.dirty || !formWarehouse.valid || errorName || errorPhone'
+                class="waves-effect waves-light btn">Edit Warehouse
+        </button>
+      </div>
+      <div class="form-success">
+        <button (click)="$event.preventDefault()" routerLink="/warehouses" class="waves-effect waves-light btn">Back to
+          warehouses list
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

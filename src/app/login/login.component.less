@@ -1,0 +1,96 @@
+@import '../../assets/constants';
+
+.error {
+  color: #ff0000;
+  font: bold 14px sans-serif;
+  padding: 5px;
+  background: #ff000036;
+}
+
+.container-login__title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 55px;
+  position: relative;
+  bottom: 30px;
+  text-shadow: -2px -1px 0px black;
+  color: @color-icon-light;
+}
+
+.row {
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2%;
+  width: 30%;
+}
+
+.sign {
+  background: @gold-light;
+
+  &:hover {
+    background: #e69c3f;
+  }
+}
+
+.container-login {
+  width: 40%;
+  height: 30%;
+  min-height: 320px;
+  margin: auto;
+  min-width: 290px;
+}
+
+.btn-primary {
+  width: 120px;
+  margin: 16px 0;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: @extra-large-width) {
+  .container-login {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: @large-width) {
+  .container-login {
+    width: 80%;
+
+    &__title {
+      font-size: 60px;
+    }
+  }
+}
+
+@media only screen and (max-width: @large-medium-width) {
+  .container-login {
+    width: 100%;
+
+    &__title {
+      font-size: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width: @medium-width) {
+  .container-login {
+    width: 80%;
+
+    &__title {
+      font-size: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+  .container-login {
+    &__title {
+      font-size: 30px;
+    }
+
+    .row {
+      width: 65%;
+    }
+  }
+}

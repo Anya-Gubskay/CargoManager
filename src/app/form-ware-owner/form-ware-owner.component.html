@@ -1,0 +1,71 @@
+<div class="container-wareOwner">
+  <h2 class="container-wareOwner__title">Ware Owner</h2>
+  <div class="row">
+    <form [formGroup]="formWareOwner">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+               formControlName="name" (ngModelChange)="changesName()">
+      </div>
+      <app-validation-messages [controlName]="formWareOwner.controls['name']" [nameField]="name"
+                               [errorField]="errorName">
+      </app-validation-messages>
+      <div class="form-group">
+        <label for="phone">Phone *</label>
+        <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone"
+               formControlName="phone">
+      </div>
+      <app-validation-messages [controlName]="formWareOwner.controls['phone']"
+                               [nameField]="phone"></app-validation-messages>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+               formControlName="email" (ngModelChange)="changesEmail()">
+      </div>
+      <app-validation-messages [controlName]="formWareOwner.controls['email']" [nameField]="email"
+                               [errorField]="errorEmail"></app-validation-messages>
+      <div class="form-group" formGroupName="address" id="address">
+        <label for="address">Address *</label>
+        <div class="address-field-wareOwner">
+          <label for="city">City *</label>
+          <input type="text" class="form-control" placeholder="City" id="city" formControlName="city">
+        </div>
+        <app-validation-messages [controlName]="address.controls['city']" [nameField]="city"
+                                 [errorMargin]="errorMargin"></app-validation-messages>
+        <div class="address-field-wareOwner">
+          <label for="street">Street *</label>
+          <input type="text" class="form-control" placeholder="Street" id="street" formControlName="street">
+        </div>
+        <app-validation-messages [controlName]="address.controls['street']" [nameField]="street"
+                                 [errorMargin]="errorMargin"></app-validation-messages>
+        <div class="address-field-wareOwner">
+          <label for="house">House *</label>
+          <input type="text" class="form-control" placeholder="House" id="house" formControlName="house">
+        </div>
+        <app-validation-messages [controlName]="address.controls['house']" [nameField]="house"
+                                 [errorMargin]="errorMargin"></app-validation-messages>
+        <div class="address-field-wareOwner">
+          <label for="officeAddressUser">Office</label>
+          <input type="text" class="form-control" placeholder="Office" id="officeAddressUser" formControlName="office">
+        </div>
+      </div>
+      <div class="form-group">
+        <button *ngIf="add" (click)="addWareOwner()" [disabled]='!formWareOwner.valid'
+                class="waves-effect waves-light btn">Add
+          Ware Owner
+        </button>
+      </div>
+      <div class="form-group">
+        <button *ngIf="edit" (click)="editWareOwner()"
+                [disabled]="!formWareOwner.dirty || !formWareOwner.valid || errorName || errorEmail"
+                class="waves-effect waves-light btn">Edit Ware Owner
+        </button>
+      </div>
+      <div class="form-success">
+        <button (click)="$event.preventDefault()" routerLink="/wareOwners" class="waves-effect waves-light btn">Back to
+          Ware Owners list
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

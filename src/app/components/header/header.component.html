@@ -1,0 +1,82 @@
+<div class="navbar-fixed" *ngIf="router.url != '/login'">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+        <mat-menu class="dropdown-menu" #menu="matMenu">
+          <a mat-menu-item routerLink="companies" routerLinkActive="activeMobile"
+             *ngIf="authenticationService.roles.systemAdmin.status">
+            <i class="material-icons">assignment</i>Companies
+          </a>
+          <a mat-menu-item routerLink="users" routerLinkActive="activeMobile"
+             *ngIf="authenticationService.roles.companyAdmin.status">
+            <i class="material-icons">assignment_ind</i>Users
+          </a>
+          <a mat-menu-item routerLink="warehouses" routerLinkActive="activeMobile" *ngIf="authenticationService.roles.companyAdmin.status ||
+            authenticationService.roles.dispatcher.status">
+            <i class="material-icons">home_work</i>Warehouses
+          </a>
+          <a mat-menu-item routerLink="vehicles" routerLinkActive="activeMobile" *ngIf="authenticationService.roles.companyAdmin.status ||
+            authenticationService.roles.dispatcher.status">
+            <i class="material-icons">directions_car</i>Vehicles
+          </a>
+          <a mat-menu-item routerLink="consignment-notes" routerLinkActive="activeMobile" *ngIf="authenticationService.roles.companyAdmin.status ||
+            authenticationService.roles.dispatcher.status || authenticationService.roles.manager.status">
+            <i class="material-icons">insert_drive_file</i>Сonsignment Notes
+          </a>
+          <a mat-menu-item routerLink="wareOwners" routerLinkActive="activeMobile" *ngIf="authenticationService.roles.companyAdmin.status ||
+            authenticationService.roles.dispatcher.status">
+            <i class="material-icons">shopping_cart</i>Ware Owners
+          </a>
+          <a mat-menu-item (click)="logout()"><i class="material-icons">exit_to_app</i>Sign Out</a>
+        </mat-menu>
+        <ul id="nav-mobile" class="left">
+          <div class="container__menu">
+            <li>
+              <a class="dropdown-trigger" mat-button [matMenuTriggerFor]="menu"><i class="material-icons">menu</i></a>
+            </li>
+            <li>
+              <a routerLink="companies" routerLinkActive="active"
+                 *ngIf="authenticationService.roles.systemAdmin.status">
+                <i class="material-icons">assignment</i>Companies
+              </a>
+            </li>
+            <li>
+              <a routerLink="users" routerLinkActive="active" *ngIf="authenticationService.roles.companyAdmin.status">
+                <i class="material-icons">assignment_ind</i>Users
+              </a>
+            </li>
+            <li>
+              <a routerLink="warehouses" routerLinkActive="active" *ngIf="authenticationService.roles.companyAdmin.status ||
+                authenticationService.roles.dispatcher.status">
+                <i class="material-icons">home_work</i>Warehouses
+              </a>
+            </li>
+            <li>
+              <a routerLink="vehicles" routerLinkActive="active" *ngIf="authenticationService.roles.companyAdmin.status ||
+                authenticationService.roles.dispatcher.status">
+                <i class="material-icons">directions_car</i>Vehicles
+              </a>
+            </li>
+            <li>
+              <a routerLink="consignment-notes" routerLinkActive="active" *ngIf="authenticationService.roles.companyAdmin.status ||
+                authenticationService.roles.dispatcher.status || authenticationService.roles.manager.status">
+                <i class="material-icons">insert_drive_file</i>Сonsignment Notes
+              </a>
+            </li>
+            <li>
+              <a routerLink="wareOwners" routerLinkActive="active" *ngIf="authenticationService.roles.companyAdmin.status ||
+                authenticationService.roles.dispatcher.status">
+                <i class="material-icons">shopping_cart</i>Ware Owners
+              </a>
+            </li>
+          </div>
+          <div class="container__exit">
+            <li class="sign-out">
+              <a (click)="logout()"><i class="material-icons">exit_to_app</i>Sign Out</a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

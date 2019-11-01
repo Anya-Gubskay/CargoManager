@@ -1,0 +1,33 @@
+<div class="container-warehouses">
+  <h4 class="container-warehouse__title">List of warehouses</h4>
+  <div class="control-panel">
+    <div>
+      <button (click)="$event.preventDefault()" routerLink="/warehouses/add" class="waves-light btn"
+              *ngIf="authenticationService.roles.companyAdmin.status">Add
+      </button>
+    </div>
+    <form *ngIf="(warehousesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-warehouses">
+    <app-item-warehouse class="content-warehouse"
+                        *ngFor="let u of (warehousesItems$ | async)?.items | paginate: {id: 'warehousesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (warehousesItems$| async)?.total}"
+                        [warehouse]="u"
+                        (onDelete)="openDialog($event)"
+    >
+    </app-item-warehouse>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(warehousesItems$ | async)?.total === 0" class="title-empty">
+      <h5 colspan="6" class="noWarehouses">No warehouses</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(warehousesItems$ | async)?.total > (warehousesItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)" class="pagination-custom"
+                       id="warehousesPagination"></pagination-controls>
+</div>

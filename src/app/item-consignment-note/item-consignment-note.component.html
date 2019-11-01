@@ -1,0 +1,34 @@
+<div class="content-consignment-note" [class.suspended]="buttonStatus === 'Checked'">
+  <div class="number-consignment-note">
+    <p><i class="material-icons"></i>{{this.consignmentNoteDate.status}}</p>
+    <a
+      *ngIf="authenticationService.roles.dispatcher.status &&  consignmentNote.userId === authenticationService.tokenParse().idUser"
+      [routerLink]="['/consignment-notes/edit', consignmentNote.id]" routerLinkActive="active">
+      <h5>CN №</h5><h5 class="underline"> {{this.consignmentNoteDate.number}}</h5>
+    </a>
+    <div
+      *ngIf="!(authenticationService.roles.dispatcher.status && consignmentNote.userId === authenticationService.tokenParse().idUser)">
+      <h5>CN №</h5><h5 class="underline"> {{this.consignmentNoteDate.number}}</h5>
+    </div>
+    <h6
+      [class.blackColor]="!(authenticationService.roles.dispatcher.status && consignmentNote.userId === authenticationService.tokenParse().idUser)">
+      Date:{{this.consignmentNoteDate.date}}</h6>
+  </div>
+  <div class="data-consignment-note">
+    <p class="dispatcher"><i
+      class="material-icons">record_voice_over</i>Dispatcher: {{this.consignmentNoteDate.dispatcher}}</p>
+    <p class="wareOwner"><i class="material-icons">account_circle</i>Ware Owner: {{this.consignmentNoteDate.wareOwner}}
+    </p>
+    <p class="vehicle"><i class="material-icons">local_shipping</i>Vehicle: {{this.consignmentNoteDate.vehicle}}</p>
+    <p class="driver"><i class="material-icons">account_circle</i>Driver: {{this.consignmentNoteDate.driver}}</p>
+  </div>
+  <div class="control-consignment-note">
+    <span class="status-button" *ngIf="authenticationService.roles.manager.status">
+      <a (click)="openDialog()"
+         class="waves-light btn status"
+         [class.button-background]="buttonStatus === 'Checked'">
+        Mark as Checked
+      </a>
+    </span>
+  </div>
+</div>

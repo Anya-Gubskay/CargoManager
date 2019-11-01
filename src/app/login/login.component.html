@@ -1,0 +1,30 @@
+<div class="container-login">
+  <h4 class="container-login__title">Welcome to CargoManager</h4>
+  <div class="row">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" id="login" formControlName="login" class="form-control" placeholder="Login"
+               (ngModelChange)="changesLogin()">
+      </div>
+      <div class="error"
+           *ngIf="loginForm.controls['login'].invalid && loginForm.controls['login'].touched || errorLogin">
+        Enter correct login
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" autocomplete="off"
+               placeholder="Password" (ngModelChange)="changesPassword()">
+      </div>
+      <div class="error"
+           *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched || errorPassword">
+        Enter correct password
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary sign"
+                [disabled]='!loginForm.dirty || !loginForm.valid || errorLogin || errorPassword'>Sign in
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

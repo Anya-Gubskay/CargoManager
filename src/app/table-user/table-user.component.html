@@ -1,0 +1,31 @@
+<div class="container-users">
+  <h4 class="container-user__title">List of users</h4>
+  <div class="control-panel">
+    <div>
+      <button (click)="$event.preventDefault()" routerLink="/users/add" class="waves-light btn">Add</button>
+    </div>
+    <form *ngIf="(usersItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-users">
+    <app-item-user class="content-user"
+                   *ngFor="let u of (usersItems$ | async)?.items | paginate: {id: 'usersPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (usersItems$| async)?.total}"
+                   [user]="u"
+                   (onDelete)="openDialog($event)"
+    >
+    </app-item-user>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(usersItems$ | async)?.total === 0" class="title-empty">
+      <h5 colspan="6" class="noUsers">No users</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(usersItems$ | async)?.total > (usersItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)" class="pagination-custom"
+                       id="usersPagination"></pagination-controls>
+</div>

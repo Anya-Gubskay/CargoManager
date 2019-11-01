@@ -1,0 +1,151 @@
+@import '../../assets/constants.less';
+
+.error {
+  color: #ff0000;
+  font: bold 14px sans-serif;
+  padding: 5px;
+  background: #ff000036;
+}
+
+.container-wareOwner {
+  display: block;
+  width: 92%;
+  margin: calc(4% + 64px) 0 28px 4%;
+}
+
+.container-wareOwner__title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.row {
+  background-color: @white;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.form-success {
+  color: green;
+  font: bold 20px "SansSerif";
+
+  p {
+    margin: 0;
+  }
+}
+
+.form-group button,
+.form-success button {
+  width: 250px;
+  margin: 16px 0;
+  font-weight: bold;
+  background: @gold-light;
+  transition: all ease-out .4s;
+
+  &:hover {
+    background: @gold-light-hover;
+  }
+}
+
+.title-modal {
+  font: bold 20px sans-serif;
+  text-align: center;
+}
+
+.modal-close {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.title-modal {
+  font: bold 20px sans-serif;
+  text-align: center;
+}
+
+a {
+  padding: 5px;
+  display: inline-block;
+  cursor: pointer;
+  max-width: 190px;
+  background: @gold-light;
+  margin: 5px;
+  color: @white;
+}
+
+.error-modal {
+  color: red;
+}
+
+.modal-close {
+  display: block;
+  cursor: pointer;
+  transform: translate(310px, -40px);
+}
+
+.address-field-wareOwner {
+  margin-left: 50px;
+}
+
+
+@media only screen and (max-width: @medium-width) {
+
+  .container-wareOwner__title {
+    font-size: 35px;
+    margin: 5% 0;
+  }
+}
+
+.form-group > label {
+  font-size: large;
+}
+
+::ng-deep.mat-form-field-infix > label {
+  font-size: large;
+}
+
+::ng-deep .mat-icon-button {
+  position: absolute;
+  width: 3em !important;
+  height: 3em !important;
+  right: 25px;
+  top: 5px;
+}
+
+::ng-deep.mat-datepicker-toggle-default-icon {
+  transform: scale(3) !important;
+  color: gray !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep.mat-calendar-body-selected {
+  background: @gold-light;
+}
+
+::ng-deep button:focus {
+  background: @gold-light;
+}
+
+#dateOfBirth {
+  width: 100px;
+}
+
+::ng-deep.selected-item {
+  background: @gold-light !important;
+  border: solid 1px black !important;
+  color: black !important;
+  font-weight: bold;
+}
+
+::ng-deep.multiselect-item-checkbox div::before {
+  border: solid black 1px !important;
+}
+
+::ng-deep.multiselect-item-checkbox input:checked + div::before {
+  background: @gold-light !important;
+}

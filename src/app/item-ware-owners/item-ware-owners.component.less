@@ -1,0 +1,123 @@
+@import '../../assets/constants.less';
+
+.content-owner {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.6s linear;
+  opacity: 1;
+  min-height: 210px;
+
+  .address-wareOwner {
+    margin: 0 7px;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+  }
+
+  .name-owner {
+    width: 90%;
+    text-align: center;
+
+    p {
+      font-size: 25px;
+      font-weight: bold;
+      color: @color-light-title-user;
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+
+      p {
+        font-size: 25px;
+        font-weight: bold;
+        color: @color-light-title-user;
+        margin: 0;
+        padding: 20px 0;
+        cursor: pointer;
+        transition: all .3s linear;
+
+        &:hover {
+          color: @black;
+        }
+      }
+    }
+  }
+
+  .contacts-owner {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    width: 90%;
+    color: @white;
+    height: 110px;
+
+    .contact {
+      margin: 0 7px;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: start;
+      min-width: 50%;
+      display: flex;
+    }
+
+    i {
+      position: relative;
+      top: 7px;
+      color: @color-icon-light;
+      margin-right: 5px;
+      font-weight: 500;
+    }
+  }
+}
+
+.control-owner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 15px 12px;
+  transition: all ease-out .4s;
+
+  .delete {
+    background: @black;
+    border: solid @gold-light 1px;
+    box-shadow: none;
+    color: @gold-light;
+    font-weight: 700;
+    font-size: 17px;
+
+    &:hover {
+      background: @white;
+    }
+  }
+}
+
+@media only screen and (max-width: @medium-width) {
+  .content-owner {
+    .name-owner {
+      p {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+  .content-owner {
+    .contacts-owner {
+      .contact, .address-wareOwner {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+

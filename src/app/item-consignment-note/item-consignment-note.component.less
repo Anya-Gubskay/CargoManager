@@ -1,0 +1,177 @@
+@import '../../assets/constants.less';
+
+.content-consignment-note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: all 0.6s linear;
+  z-index: 10;
+  min-height: 250px;
+
+  .number-consignment-note {
+    width: 90%;
+    height: 40%;
+    text-align: center;
+
+    p {
+      position: absolute;
+      font-size: 18px;
+      font-weight: 500;
+      color: @black;
+      margin: 30px 0 0 10px;
+    }
+
+    a {
+      display: flex;
+      justify-content: flex-end;
+      cursor: default;
+
+      &:hover {
+        h5 {
+          color: @white;
+        }
+      }
+    }
+
+    h5 {
+      font-size: 24px;
+      font-weight: bold;
+      transition: all .3s linear;
+      color: @color-light-title-company;
+      margin: 0;
+      padding: 20px 8px 0 0;
+      cursor: pointer;
+    }
+
+    .blackColor {
+      color: black;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      h5 {
+        color: black;
+        cursor: text;
+      }
+    }
+
+    h6 {
+      font-weight: bold;
+      color: @color-light-title-company;
+      text-align: end;
+      margin-right: 8px;
+    }
+  }
+
+  .data-consignment-note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    width: 90%;
+    min-height: 230px;
+    background: @white;
+    font-size: 17px;
+    margin-top: 10px;
+    padding: 10px;
+    border: solid @black 1px;
+    border-radius: 10px;
+
+    .dispatcher,
+    .wareOwner,
+    .vehicle,
+    .driver {
+      margin: 0;
+      font-weight: 500;
+      text-align: start;
+    }
+
+    i {
+      position: relative;
+      top: 7px;
+      margin-right: 5px;
+      font-weight: 500;
+      color: @color-icon-light;
+    }
+  }
+}
+
+.control-consignment-note {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 15px 0;
+  width: 90%;
+  height: 50px;
+
+  .status {
+    font-size: 17px;
+    font-weight: 700;
+    color: @gold-light;
+    background: @black;
+    border: solid @gold-light 1px;
+    box-shadow: none;
+    transition: all ease-out .4s;
+
+    &:hover {
+      background: @white;
+    }
+  }
+
+  .button-background {
+    display: none;
+  }
+}
+
+.suspended {
+  transition: all 0.6s linear;
+  background-color: @dark-item-suspended-background-color;
+}
+
+@media only screen and (max-width: @medium-width) {
+
+  .content-consignment-note {
+
+    .number-consignment-note {
+      height: 70px;
+      min-height: 90px;
+      width: 90%;
+    }
+
+    .data-consignment-note {
+
+      .dispatcher,
+      .wareOwner,
+      .vehicle,
+      .driver {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+
+  .content-consignment-note {
+
+    .number-consignment-note {
+
+      h5 {
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+

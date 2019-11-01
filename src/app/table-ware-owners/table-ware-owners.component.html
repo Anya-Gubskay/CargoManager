@@ -1,0 +1,34 @@
+<div class="container-owners">
+  <h4 class="container-owners__title">List of ware owners</h4>
+  <div class="control-panel">
+    <div>
+      <button (click)="$event.preventDefault()" routerLink="/wareOwners/add" class="waves-light btn"
+              *ngIf="authenticationService.roles.companyAdmin.status">Add
+      </button>
+    </div>
+    <form *ngIf="(wareOwnerItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-owners">
+    <app-item-ware-owners class="content-owners"
+                          *ngFor="let a of (wareOwnerItems$ | async)?.items | paginate: {id: 'wareOwnerPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (wareOwnerItems$| async)?.total}"
+                          [wareOwner]="a"
+                          (onDelete)="openDialog($event)"
+    >
+    </app-item-ware-owners>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(wareOwnerItems$ | async)?.length === 0" class="title-empty">
+      <h5 colspan="6" class="noOwners">No ware owners</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(wareOwnerItems$ | async)?.total > (wareOwnerItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)"
+                       class="pagination-custom" id="wareOwnerPagination"></pagination-controls>
+</div>
+

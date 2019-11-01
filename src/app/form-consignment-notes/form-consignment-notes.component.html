@@ -1,0 +1,79 @@
+<div class="container-consignment-notes">
+  <div class="row">
+    <h4 class="container-consignment-notes__title">Consignment note</h4>
+    <form [formGroup]="formConsignmentNotes">
+      <div class="form-group">
+        <label for="number">Number *</label>
+        <input (ngModelChange)="changesName()" type="text" class="form-control" id="number" placeholder="Number"
+               name="number" formControlName="number">
+      </div>
+      <app-validation-messages [controlName]="formConsignmentNotes.controls['number']"
+                               [errorField]="errorConsignmentNoteNumber"
+                               [nameField]="number"></app-validation-messages>
+      <div class="form-group">
+        <label for="wareOwner">Ware Owner *</label>
+        <mat-select id="wareOwner" formControlName="wareOwner" panelClass="testClass">
+          <mat-option *ngFor="let wareOwner of (wareOwnersList$ | async)" [value]=wareOwner>{{wareOwner}}</mat-option>
+        </mat-select>
+      </div>
+      <h2 class="container-consignment-notes__title">Wares</h2>
+      <div class="form-group" formArrayName="wares" id="wares" *ngFor="let ware of wares.controls; let i = index">
+        <ng-container formGroupName="{{i}}">
+          <div class="wares-field name">
+            <label for="name">Name *</label>
+            <input type="text" class="form-control" placeholder="Name" id="name" formControlName="name">
+            <app-validation-messages [controlName]="ware.controls['name']"
+                                     [nameField]="name"></app-validation-messages>
+          </div>
+          <div class="wares-field">
+            <label for="weight">Weight *</label>
+            <input type="text" class="form-control" placeholder="Weight" id="weight" formControlName="weight">
+            <app-validation-messages [controlName]="ware.controls['weight']"
+                                     [nameField]="weight"></app-validation-messages>
+          </div>
+          <div class="wares-field amount">
+            <label for="amount">Amount *</label>
+            <input type="text" class="form-control" placeholder="Amount" id="amount" formControlName="amount">
+            <app-validation-messages [controlName]="ware.controls['amount']"
+                                     [nameField]="amount"></app-validation-messages>
+          </div>
+          <button class="waves-effect waves-light btn deleteWare" *ngIf=" i > 0 " (click)="deleteWare(i)">X</button>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <button (click)="addWare()" class="waves-effect waves-light btn">Add Ware</button>
+      </div>
+      <div class="form-group">
+        <label for="vehicle">Vehicle *</label>
+        <mat-select id="vehicle" formControlName="vehicle" panelClass="testClass">
+          <mat-option *ngFor="let vehicle of (vehicleList$ | async)" [value]="vehicle">{{vehicle}}</mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <label for="driver">Driver *</label>
+        <mat-select id="driver" formControlName="driver">
+          <mat-option *ngFor="let driver of (driversList$ | async)" [value]="driver">{{driver}}</mat-option>
+        </mat-select>
+
+      </div>
+      <div class="form-group">
+        <button *ngIf="add" (click)="addConsignmentNote()" [disabled]="formConsignmentNotes.invalid"
+                class="waves-effect waves-light btn">
+          Add Consignment Note
+        </button>
+      </div>
+      <div class="form-group">
+        <button *ngIf="edit" (click)="editConsignmentNote()"
+                [disabled]=" !formConsignmentNotes.touched || formConsignmentNotes.controls.wares.invalid"
+                class="waves-effect waves-light btn">Edit Consignment notes
+        </button>
+      </div>
+      <div class="form-success">
+        <button (click)="$event.preventDefault()" routerLink="/consignment-notes" class="waves-effect waves-light btn">
+          Back to Consignment notes list
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

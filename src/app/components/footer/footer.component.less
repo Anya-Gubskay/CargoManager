@@ -1,0 +1,36 @@
+@import '../../../assets/constants.less';
+
+.footer {
+  position: relative;
+  background: @black;
+
+  .footer-copyright {
+    display: block;
+    position: relative;
+    max-width: 2048px;
+    height: 38px;
+    margin: 0 auto;
+
+    .container {
+      width: 92%;
+      max-width: 92%;
+      margin: 0 4%;
+
+      .center-align {
+        position: relative;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+        line-height: 38px;
+        color: @color-light-icon-header-footer;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @small-width) {
+
+  .footer .footer-copyright .container .center-align {
+    font-size: 12px;
+  }
+}

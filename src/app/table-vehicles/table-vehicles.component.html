@@ -1,0 +1,33 @@
+<div class="container-vehicles">
+  <h4 class="container-vehicle__title">List of vehicles</h4>
+  <div class="control-panel">
+    <div>
+      <button *ngIf="authenticationService.roles.companyAdmin.status" (click)="$event.preventDefault()"
+              routerLink="/vehicles/add" class="waves-light btn">Add
+      </button>
+    </div>
+    <form *ngIf="(vehiclesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
+      <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
+        <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="list-vehicles">
+    <app-item-vehicle class="content-vehicle"
+                      *ngFor="let a of (vehiclesItems$ | async)?.items | paginate: {id: 'vehiclesPagination',itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (vehiclesItems$| async)?.total}"
+                      [vehicle]="a"
+                      (onDelete)="openDialog($event)"
+    >
+    </app-item-vehicle>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div class="grid-clearfix"></div>
+    <div *ngIf="(vehiclesItems$ | async)?.length === 0" class="title-empty">
+      <h5 colspan="6" class="noVehicles">No vehicles</h5>
+    </div>
+  </div>
+  <pagination-controls *ngIf="(vehiclesItems$ | async)?.total > (vehiclesItems$ | async)?.items.length"
+                       (pageChange)="pageChanged($event)" class="pagination-custom"
+                       id="vehiclesPagination"></pagination-controls>
+</div>
