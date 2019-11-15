@@ -6,6 +6,7 @@
               routerLink="/vehicles/add" class="waves-light btn">Add
       </button>
     </div>
+    <app-search (onChange)="changeNumber($event)" [searchName] = "search"></app-search>
     <form *ngIf="(vehiclesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
       <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
         <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
@@ -14,7 +15,7 @@
   </div>
   <div class="list-vehicles">
     <app-item-vehicle class="content-vehicle"
-                      *ngFor="let a of (vehiclesItems$ | async)?.items | paginate: {id: 'vehiclesPagination',itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (vehiclesItems$| async)?.total}"
+                      *ngFor="let a of (vehiclesItems$ | async)?.items | paginate: {id: 'vehiclesPagination',itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (vehiclesItems$| async)?.total} | appFilter: numberAuto: 'numberAuto';"
                       [vehicle]="a"
                       (onDelete)="openDialog($event)"
     >

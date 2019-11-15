@@ -20,6 +20,8 @@ export class TableVehiclesComponent implements OnInit, OnDestroy {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items};
   public vehiclesItems$;
+  numberAuto = '';
+  search = 'Search Number';
 
   constructor(private vehicleService: VehicleService, private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
@@ -92,6 +94,10 @@ export class TableVehiclesComponent implements OnInit, OnDestroy {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersVehiclesPagination', JSON.stringify({p: $event, items: this.items}));
     this.router.navigate(['/vehicles', {items: this.items, p: $event}]);
+  }
+
+  changeNumber(auto: string) {
+    this.numberAuto = auto;
   }
 
   ngOnDestroy() {

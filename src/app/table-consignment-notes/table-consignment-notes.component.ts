@@ -18,6 +18,8 @@ export class TableConsignmentNotesComponent implements OnInit {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items, companyId: this.companyId};
   public consignmentNotesItems$;
+  numberConsignment = '';
+  search = 'Search Number';
 
   constructor(private consignmentNotesService: ConsignmentNotesService,
               private route: ActivatedRoute,
@@ -27,6 +29,10 @@ export class TableConsignmentNotesComponent implements OnInit {
     this.itemsPagination = new FormGroup({
       itemsSelect: new FormControl(null)
     });
+  }
+  ngOnInit() {
+    this.companyId = this.authenticationService.tokenParse().companyId;
+    this.checkPaginationParams();
   }
 
   changeItemsPerPage() {
@@ -63,11 +69,6 @@ export class TableConsignmentNotesComponent implements OnInit {
     this.itemsPagination.controls.itemsSelect.setValue(`${this.items}`, {onlySelf: true});
   }
 
-  ngOnInit() {
-    this.companyId = this.authenticationService.tokenParse().companyId;
-    this.checkPaginationParams();
-  }
-
   getPage(paginationParams) {
     this.consignmentNotesItems$ = this.consignmentNotesService.getPaginationItems(paginationParams);
   }
@@ -77,5 +78,9 @@ export class TableConsignmentNotesComponent implements OnInit {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersConsignmentNotesPagination', JSON.stringify({p: $event, items: this.items, companyId: this.companyId}));
     this.router.navigate(['/consignment-notes', {items: this.items, p: $event}]);
+  }
+
+  changeNumber(consignment: string) {
+    this.numberConsignment = consignment;
   }
 }

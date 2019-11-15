@@ -1,0 +1,52 @@
+@import '../../assets/constants.less';
+
+.container-search {
+  display: flex;
+
+  .container-label {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 45px;
+
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 5px;
+      margin-right: 5px;
+      color: #e69c3f;
+    }
+  }
+
+  .input__nameCompany {
+    margin-top: 0;
+    input {
+      font-size: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: @medium-width) {
+  .container-search {
+    flex-flow: column;
+    height: 40px;
+    .container-label {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      height: 45px;
+      label {
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-right: 5px;
+      }
+    }
+    .input__nameCompany {
+      margin-top: -10px;
+      input {
+        height: 20px;
+      }
+    }
+  }
+}

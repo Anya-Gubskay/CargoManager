@@ -6,6 +6,7 @@
               *ngIf="authenticationService.roles.companyAdmin.status">Add
       </button>
     </div>
+    <app-search (onChange)="changeName($event)" [searchName] = "search"></app-search>
     <form *ngIf="(wareOwnerItems$ | async)?.total > 10" [formGroup]="itemsPagination">
       <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
         <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
@@ -14,7 +15,7 @@
   </div>
   <div class="list-owners">
     <app-item-ware-owners class="content-owners"
-                          *ngFor="let a of (wareOwnerItems$ | async)?.items | paginate: {id: 'wareOwnerPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (wareOwnerItems$| async)?.total}"
+                          *ngFor="let a of (wareOwnerItems$ | async)?.items | paginate: {id: 'wareOwnerPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (wareOwnerItems$| async)?.total} | appFilter: nameWareOwner: 'name';"
                           [wareOwner]="a"
                           (onDelete)="openDialog($event)"
     >

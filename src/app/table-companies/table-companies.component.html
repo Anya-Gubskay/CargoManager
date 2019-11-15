@@ -4,6 +4,15 @@
     <div>
       <button (click)="$event.preventDefault()" routerLink="/companies/add" class="waves-light btn">Add</button>
     </div>
+    <app-search (onChange)="changeName($event)" [searchName] = "search"></app-search>
+    <div *ngIf="(companiesItems$ | async)?.total === 0"  class="container-search">
+      <div class="container-label">
+        <label  class="active" for="name">Search Name</label>
+      </div>
+      <div class="input__nameCompany input-field">
+        <input  id="name" type="text" class="validate" [(ngModel)]="nameCompany">
+      </div>
+    </div>
     <form *ngIf="(companiesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
       <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
         <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
@@ -12,7 +21,7 @@
   </div>
   <div class="list-companies">
     <app-item-company class="content-company"
-                      *ngFor="let u of (companiesItems$ | async)?.items | paginate: {id: 'companiesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (companiesItems$| async)?.total}"
+                      *ngFor="let u of (companiesItems$ | async)?.items | paginate: {id: 'companiesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (companiesItems$| async)?.total} | appFilter: nameCompany: 'name';"
                       [company]="u"
     >
     </app-item-company>

@@ -22,7 +22,8 @@ export class TableUserComponent implements OnInit, OnDestroy {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items, companyId: this.companyId};
   public usersItems$;
-
+  nameUser = '';
+  search = 'Search Surname';
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router,
@@ -95,6 +96,10 @@ export class TableUserComponent implements OnInit, OnDestroy {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersUsersPagination', JSON.stringify({p: $event, items: this.items, companyId: this.companyId}));
     this.router.navigate(['/users', {items: this.items, p: $event}]);
+  }
+
+  changeName(name: string) {
+    this.nameUser = name;
   }
 
   ngOnDestroy() {

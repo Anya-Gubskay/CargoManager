@@ -4,6 +4,7 @@
     <div>
       <button (click)="$event.preventDefault()" routerLink="/users/add" class="waves-light btn">Add</button>
     </div>
+    <app-search (onChange)="changeName($event)" [searchName] = "search"></app-search>
     <form *ngIf="(usersItems$ | async)?.total > 10" [formGroup]="itemsPagination">
       <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
         <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
@@ -12,7 +13,7 @@
   </div>
   <div class="list-users">
     <app-item-user class="content-user"
-                   *ngFor="let u of (usersItems$ | async)?.items | paginate: {id: 'usersPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (usersItems$| async)?.total}"
+                   *ngFor="let u of (usersItems$ | async)?.items | paginate: {id: 'usersPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (usersItems$| async)?.total} | appFilter: nameUser: 'surname';"
                    [user]="u"
                    (onDelete)="openDialog($event)"
     >

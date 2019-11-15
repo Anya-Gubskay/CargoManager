@@ -21,6 +21,8 @@ export class TableWarehousesComponent implements OnInit, OnDestroy {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items};
   public warehousesItems$;
+  nameWarehouse = '';
+  search = 'Search Name';
 
   constructor(private warehouseService: WarehouseService,
               private route: ActivatedRoute,
@@ -31,6 +33,10 @@ export class TableWarehousesComponent implements OnInit, OnDestroy {
     this.itemsPagination = new FormGroup({
       itemsSelect: new FormControl(null)
     });
+  }
+
+  ngOnInit() {
+    this.checkPaginationParams();
   }
 
   openDialog(id: string) {
@@ -82,10 +88,6 @@ export class TableWarehousesComponent implements OnInit, OnDestroy {
     this.itemsPagination.controls.itemsSelect.setValue(`${this.items}`, {onlySelf: true});
   }
 
-  ngOnInit() {
-    this.checkPaginationParams();
-  }
-
   getPage(paginationParams) {
     this.warehousesItems$ = this.warehouseService.getPaginationItems(paginationParams);
   }
@@ -95,6 +97,10 @@ export class TableWarehousesComponent implements OnInit, OnDestroy {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersWarehousesPagination', JSON.stringify({p: $event, items: this.items}));
     this.router.navigate(['/warehouses', {items: this.items, p: $event}]);
+  }
+
+  changeName(name: string) {
+    this.nameWarehouse = name;
   }
 
   ngOnDestroy() {

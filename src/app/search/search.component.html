@@ -1,0 +1,8 @@
+<div class="container-search">
+    <div class="container-label">
+        <label  class="active" for="search">{{searchName}}</label>
+    </div>
+    <div class="input__nameCompany input-field">
+        <input  id="search" type="text" class="validate" #nameInput (input) = "changeName(nameInput.value)" >
+    </div>
+</div>

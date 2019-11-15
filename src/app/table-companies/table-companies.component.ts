@@ -17,6 +17,8 @@ export class TableCompaniesComponent implements OnInit {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items};
   public companiesItems$;
+  nameCompany = '';
+  search = 'Search Name';
 
   constructor(private companyService: CompanyService,
               private route: ActivatedRoute,
@@ -25,6 +27,10 @@ export class TableCompaniesComponent implements OnInit {
     this.itemsPagination = new FormGroup({
       itemsSelect: new FormControl(null)
     });
+  }
+
+  ngOnInit() {
+    this.checkPaginationParams();
   }
 
   changeItemsPerPage() {
@@ -56,10 +62,6 @@ export class TableCompaniesComponent implements OnInit {
     this.itemsPagination.controls.itemsSelect.setValue(`${this.items}`, {onlySelf: true});
   }
 
-  ngOnInit() {
-    this.checkPaginationParams();
-  }
-
   getPage(paginationParams) {
     this.companiesItems$ = this.companyService.getPaginationItems(paginationParams);
   }
@@ -69,5 +71,10 @@ export class TableCompaniesComponent implements OnInit {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersCompaniesPagination', JSON.stringify({p: $event, items: this.items}));
     this.router.navigate(['/companies', {items: this.items, p: $event}]);
+  }
+
+
+  changeName(name: string) {
+    this.nameCompany = name;
   }
 }

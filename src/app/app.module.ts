@@ -1,37 +1,36 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {JwtModule} from '@auth0/angular-jwt';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule, MatButtonModule, MatFormFieldModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {TableCompaniesComponent} from './table-companies/table-companies.component';
 import {ItemCompanyComponent} from './item-company/item-company.component';
-import {CompanyService} from './company.service';
-import {ErrorService} from './error.service';
 import {FormCompanyComponent} from './form-company/form-company.component';
+import {ErrorService} from './error.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TableUserComponent} from './table-user/table-user.component';
 import {ItemUserComponent} from './item-user/item-user.component';
 import {UserService} from './user.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatMenuModule, MatButtonModule, MatFormFieldModule} from '@angular/material';
-import {MatDialogModule} from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {PopupComponent} from './popup/popup.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {FormUserComponent} from './form-user/form-user.component';
 import {MaterialModule} from './material.module';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown-angular7';
 import {LoginComponent} from './login/login.component';
-import {AuthGuard} from './auth.guard';
 import {JwtInterceptor} from './jwt.interceptor';
-import {JwtModule} from '@auth0/angular-jwt';
 import {RoleGuardService} from './roleGuard.service';
-import {Role} from './login/Role.enum';
 import {VehicleService} from './vehicle.service';
 import {ValidationMessagesComponent} from './validation-messages/validation-messages.component';
 import {TableWarehousesComponent} from './table-warehouses/table-warehouses.component';
@@ -49,7 +48,13 @@ import {ItemConsignmentNoteComponent} from './item-consignment-note/item-consign
 import {WareOwnerService} from './wareOwner.service';
 import {FormVehicleComponent} from './form-vehicle/form-vehicle.component';
 import {FormWareOwnerComponent} from './form-ware-owner/form-ware-owner.component';
-import {MatSelectModule} from '@angular/material/select';
+import {SearchComponent} from './search/search.component';
+import {CompanyService} from './company.service';
+import {FilterPipe} from './pipes/filter.pipe';
+import {AuthGuard} from './auth.guard';
+import {Role} from './login/Role.enum';
+
+
 
 const  routes = [
   {path: '', redirectTo: '/companies', pathMatch: 'full', canActivate: [AuthGuard]},
@@ -102,7 +107,9 @@ const  routes = [
     TableWareOwnersComponent,
     ItemWareOwnersComponent,
     FormVehicleComponent,
-    FormWareOwnerComponent
+    FormWareOwnerComponent,
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,8 @@ export class TableWareOwnersComponent implements OnInit, OnDestroy {
   savedParam: any;
   paginationParams: object = {p: this.p, items: this.items};
   public wareOwnerItems$;
+  nameWareOwner = '';
+  search = 'Search Name';
 
   constructor(private wareOwnerService: WareOwnerService,
               private authenticationService: AuthenticationService,
@@ -91,6 +93,10 @@ export class TableWareOwnersComponent implements OnInit, OnDestroy {
     this.getPage(this.paginationParams);
     localStorage.setItem('parametersWaresOwnersPagination', JSON.stringify({p: $event, items: this.items}));
     this.router.navigate(['/wareOwners', {items: this.items, p: $event}]);
+  }
+
+  changeName(wareOwner: string) {
+    this.nameWareOwner = wareOwner;
   }
 
   ngOnDestroy() {

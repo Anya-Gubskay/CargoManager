@@ -6,6 +6,7 @@
               *ngIf="authenticationService.roles.dispatcher.status">Add
       </button>
     </div>
+    <app-search (onChange)="changeNumber($event)" [searchName] = "search"></app-search>
     <form *ngIf="(consignmentNotesItems$ | async)?.total > 10" [formGroup]="itemsPagination">
       <select class="custom-select" (change)="changeItemsPerPage()" formControlName="itemsSelect">
         <option *ngFor="let item of itemsNum" [ngValue]="item">{{item}}</option>
@@ -14,7 +15,7 @@
   </div>
   <div class="list-consignment-notes">
     <app-item-consignment-note class="content-consignment-note"
-                               *ngFor="let u of (consignmentNotesItems$ | async)?.items | paginate: {id: 'consignmentNotesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (consignmentNotesItems$| async)?.total}"
+                               *ngFor="let u of (consignmentNotesItems$ | async)?.items | paginate: {id: 'consignmentNotesPagination', itemsPerPage: this.items, currentPage: this.paginationParams.p, totalItems: (consignmentNotesItems$| async)?.total} | appFilter: numberConsignment: 'number';"
                                [consignmentNote]="u">
     </app-item-consignment-note>
     <div class="grid-clearfix"></div>
